@@ -64,10 +64,16 @@ def initialize_session_state() -> None:
     """
     # Chatbot initialization
     if 'chatbot' not in st.session_state:
-        api_key = os.getenv('GEMINI_API_KEY')
+        # Try to get API key from Streamlit secrets first, then from environment
+        api_key = None
+        try:
+            api_key = st.secrets.get("GEMINI_API_KEY")
+        except (FileNotFoundError, KeyError):
+            api_key = os.getenv('GEMINI_API_KEY')
+        
         if not api_key:
-            st.error("❌ GEMINI_API_KEY not found in environment variables!")
-            st.info("Please add your Gemini API key to the .env file")
+            st.error("❌ GEMINI_API_KEY not found!")
+            st.info("Please add your Gemini API key to Streamlit secrets or .env file")
             st.stop()
         st.session_state.chatbot = GeminiChatbot(api_key)
     
