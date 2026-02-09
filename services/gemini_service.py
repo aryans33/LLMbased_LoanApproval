@@ -101,13 +101,13 @@ YOUR RESPONSIBILITIES:
 
 Start by warmly greeting the user and asking how you can help them today."""
 
-    def __init__(self, api_key: str, model_name: str = "gemini-pro"):
+    def __init__(self, api_key: str, model_name: str = "models/gemini-2.5-flash"):
         """
         Initialize Gemini chatbot
         
         Args:
             api_key: Google Gemini API key
-            model_name: Model to use (default: gemini-pro)
+            model_name: Model to use (default: models/gemini-2.5-flash)
         """
         genai.configure(api_key=api_key)
         
