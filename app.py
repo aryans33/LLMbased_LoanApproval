@@ -282,6 +282,17 @@ class StyleManager:
                 border-color: #0066cc;
             }
             
+            /* Chat Input Text Color */
+            [data-testid="stChatInput"] input,
+            [data-testid="stChatInput"] textarea {
+                color: #000000 !important;
+            }
+            
+            [data-testid="stChatInput"] input::placeholder,
+            [data-testid="stChatInput"] textarea::placeholder {
+                color: #6c757d !important;
+            }
+            
             /* Metrics */
             [data-testid="stMetric"] {
                 background: #ffffff;
